@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-rational-order-fix"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-scss"
+  ],
+  "customSyntax": "PostCSS",
+  "rules": {
+    "import-notation": "string",
+    "property-no-vendor-prefix": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "value-keyword-case": ["lower", { "ignoreProperties": ["/^\\$/"] }]
+  }
+}

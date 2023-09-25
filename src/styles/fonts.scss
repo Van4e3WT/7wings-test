@@ -1,5 +1,4 @@
-@import './mixins.scss';
-
+@import './mixins';
 @include font-face('Roboto', '../fonts/roboto/roboto-thin', 100);
 @include font-face('Roboto', '../fonts/roboto/roboto-thin-italic', 100, italic);
 @include font-face('Roboto', '../fonts/roboto/roboto-light', 300);

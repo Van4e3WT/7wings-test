@@ -1,7 +1,9 @@
 import '@/styles/global.scss';
 
+import { Test } from './components/Test/Test';
+
 const App: React.FC = () => (
-  <div>Hello world!</div>
+  <Test />
 );
 
 export default App;

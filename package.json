@@ -21,6 +21,11 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "sass": "^1.68.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-rational-order-fix": "^0.1.9",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.2.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -29,6 +34,7 @@
     "build": "craco build",
     "test": "craco test",
     "lint": "eslint .",
+    "stylelint": "stylelint **/*.{css,scss}",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
