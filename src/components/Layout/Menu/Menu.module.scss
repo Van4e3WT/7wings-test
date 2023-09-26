@@ -1,0 +1,80 @@
+@import '@/styles/variables';
+
+.menu {
+  width: 100%;
+  max-width: 234px;
+  background-color: $secondary-background-color;
+  border-right: 1px solid $border-color;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 20px;
+  color: $secondary-text-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.description {
+  font-size: 10px;
+}
+
+.expander {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border: 2px solid $text-color;
+    border-top: none;
+    border-left: none;
+    transform: translate(-50%, -75%) rotate(45deg);
+    content: '';
+  }
+}
+
+.button {
+  display: flex;
+  flex-grow: 1;
+  gap: 14px;
+  align-items: center;
+  padding: 5px 20px;
+  color: $text-color;
+
+  &:hover {
+    color: $secondary-text-color;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
+
+  &-item {
+    display: flex;
+
+    &--active {
+      background-color: $secondary-text-color;
+
+      .button {
+        color: $background-color;
+      }
+    }
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
