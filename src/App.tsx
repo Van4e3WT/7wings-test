@@ -1,9 +1,9 @@
 import '@/styles/global.scss';
 
-import { Test } from './components/Test/Test';
+import { Layout } from './components/Layout';
 
 const App: React.FC = () => (
-  <Test />
+  <Layout />
 );
 
 export default App;
