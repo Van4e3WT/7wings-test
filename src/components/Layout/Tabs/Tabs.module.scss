@@ -1,0 +1,14 @@
+@import '@/styles/variables';
+
+.wrapper {
+  background-color: $secondary-background-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.tab {
+  padding: 12px 15px;
+  color: $text-color;
+  font-size: 18px;
+  line-height: 110%;
+  border-right: 1px solid $border-color;
+}
