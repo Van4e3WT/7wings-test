@@ -8,5 +8,14 @@
 }
 
 body {
+  color: $text-color;
   font-family: $font;
+}
+
+button {
+  color: $secondary-text-color;
+  font-family: $font;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
