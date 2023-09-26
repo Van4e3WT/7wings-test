@@ -1,0 +1,59 @@
+@import '@/styles/variables';
+
+.wrapper {
+  display: flex;
+  gap: 31px;
+  background: $secondary-background-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0 10px 20px;
+  color: $secondary-text-color;
+}
+
+.list {
+  display: flex;
+  gap: 28px;
+  height: 100%;
+  color: $secondary-text-color;
+  list-style-type: none;
+
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+
+    &--active {
+      color: $text-color;
+
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: $text-color;
+        content: '';
+      }
+    }
+  }
+}
+
+.button {
+  color: inherit;
+  font-size: inherit;
+
+  &:hover {
+    color: $text-color;
+    transition: color ease-in .2s;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
