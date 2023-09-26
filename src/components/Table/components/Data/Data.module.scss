@@ -1,0 +1,12 @@
+@import '@/styles/variables';
+
+.table-data {
+    padding: 20px 12px;
+    overflow: hidden;
+
+    &:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+}

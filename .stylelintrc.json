@@ -9,6 +9,7 @@
   ],
   "customSyntax": "PostCSS",
   "rules": {
+    "string-quotes": "single",
     "import-notation": "string",
     "property-no-vendor-prefix": null,
     "scss/dollar-variable-empty-line-before": null,

@@ -1,0 +1,15 @@
+@import '@/styles/variables';
+
+.table-head {
+  text-align: left;
+  background-color: $background-color;
+
+  & > tr {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: auto;
+    color: $secondary-text-color;
+    border: none;
+  }
+}
