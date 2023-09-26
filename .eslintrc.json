@@ -5,7 +5,8 @@
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:import/recommended"
   ],
   "plugins": [
     "@typescript-eslint"
@@ -15,8 +16,21 @@
     "project": "./tsconfig.json"
   },
   "ignorePatterns": ["craco.config.js"],
+  "settings": {
+    "import/resolver": 
+    {
+      "alias": {
+        "map": [
+          ["@", "./src"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/dot-notation": "off",
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["private-constructors"] }],
+    "class-methods-use-this": "off",
     "import/order": ["error", {
       "newlines-between": "always",
       "groups": [
@@ -28,7 +42,7 @@
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "react/function-component-definition": [
-      2,
+      "error",
       {
         "namedComponents": "arrow-function"
       }
