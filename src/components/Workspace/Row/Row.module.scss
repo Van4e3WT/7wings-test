@@ -1,0 +1,47 @@
+@import '@/styles/mixins';
+
+
+.button {
+  padding: 2px;
+
+  &:hover {
+    color: $text-color;
+  }
+
+  &--color--accent {
+    color: $accent-color;
+  }
+
+  &--color--error {
+    color: $error-color;
+  }
+
+  &--type--extended {
+    display: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  border-radius: 6px;
+  transition: ease-in .2s;
+
+  &:hover {
+    background-color: $border-color;
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    .button--type--extended {
+      display: block;
+    }
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.input {
+  @include input;
+}

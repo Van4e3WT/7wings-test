@@ -7,6 +7,7 @@ import { ListResponse, api } from '@/api';
 import S from './Workspace.module.scss';
 import { Row } from './Row';
 import { WorkspaceProvider } from './Workspace.context';
+import { defaultRowData } from './Workspace.data';
 
 type FormFields = {
   rowName: string;
@@ -25,7 +26,22 @@ export const Workspace: React.FC = () => {
   }, []);
 
   const handleFormSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log(data);
+    api.createRow({
+      parentId: null,
+      ...defaultRowData,
+      ...data,
+    }).then((res) => {
+      setList((prevState) => {
+        const newItem = {
+          ...res.current,
+          child: [],
+        };
+
+        if (!prevState) return [newItem];
+
+        return [...prevState, newItem];
+      });
+    });
   };
 
   return (
@@ -45,30 +61,10 @@ export const Workspace: React.FC = () => {
                 </Table.Row>
               </Table.Head>
               <Table.Body>
-                <Table.Row>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                  <Table.Data>Test</Table.Data>
-                </Table.Row>
+                {list?.map((row) => <Row key={row.id} data={row} />)}
+                {list && list.length === 0 && (
+                <Row isEditable />
+                )}
               </Table.Body>
             </Table>
           </form>

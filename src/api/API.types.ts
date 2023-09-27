@@ -36,5 +36,5 @@ export type ListResponse = Array<NestedRow>;
 
 export type RecalculatedRowsResponse = {
   changed: Array<ExtendedRow>;
-  current: Array<ExtendedRow>;
+  current: ExtendedRow;
 };
