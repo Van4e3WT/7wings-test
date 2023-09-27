@@ -1,9 +1,4 @@
-export type EntityResponse = {
-  id: number;
-  rowName: string;
-};
-
-export type OutlayRowUpdateRequest = {
+export type Row = {
   equipmentCosts: number;
   estimatedProfit: number;
   machineOperatorSalary: number;
@@ -16,27 +11,17 @@ export type OutlayRowUpdateRequest = {
   supportCosts: number;
 };
 
-export type RowResponse = {
-  equipmentCosts: number;
-  estimatedProfit: number;
+export type ExtendedRow = Row & {
   id: number;
-  machineOperatorSalary: number;
-  mainCosts: number;
-  materials: number;
-  mimExploitation: number;
-  overheads: number;
-  rowName: string;
-  salary: number;
-  supportCosts: number;
   total: number;
 };
 
-export type OutlayRowRequest = OutlayRowUpdateRequest & {
-  parentId: number;
+export type NestedRow = ExtendedRow & {
+  child: Array<ExtendedRow>;
 };
 
-export type CreateRowRequest = {
-  request: OutlayRowRequest;
+export type CreateRowRequest = Row & {
+  parentId: number | null;
 };
 
 export type DeleteRowRequest = {
@@ -44,14 +29,12 @@ export type DeleteRowRequest = {
 };
 
 export type UpdateRowRequest = DeleteRowRequest & {
-  request: OutlayRowUpdateRequest;
+  request: Row;
 };
+
+export type ListResponse = Array<NestedRow>;
 
 export type RecalculatedRowsResponse = {
-  changed: Array<RowResponse>;
-  current: Array<RowResponse>;
-};
-
-export type ListResponse = RowResponse & {
-  child: Array<RowResponse>;
+  changed: Array<ExtendedRow>;
+  current: Array<ExtendedRow>;
 };
