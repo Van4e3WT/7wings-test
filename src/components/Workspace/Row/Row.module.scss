@@ -1,5 +1,40 @@
 @import '@/styles/mixins';
 
+$icon-size: 24px;
+
+.level-cell {
+  position: relative;
+  padding: 0;
+}
+
+.vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  width: 1px;
+  background-color: $secondary-text-color;
+
+  &--half {
+    bottom: 50%;
+  }
+}
+
+.horizontal-line {
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 1px;
+  background-color: $secondary-text-color;
+  transform: translateY(-50%);
+}
+
+.down-line {
+  position: absolute;
+  top: calc(50% + ($icon-size / 2));
+  bottom: -1px;
+  width: 1px;
+  background-color: $secondary-text-color;
+}
 
 .button {
   padding: 2px;
@@ -22,8 +57,12 @@
 }
 
 .buttons {
+  position: absolute;
+  top: 50%;
   display: flex;
+  width: min-content;
   border-radius: 6px;
+  transform: translate(calc(-1 * ($icon-size / 2)), -50%);
   transition: ease-in .2s;
 
   &:hover {
@@ -37,8 +76,8 @@
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: $icon-size;
+  height: $icon-size;
   padding: 4px;
 }
 
