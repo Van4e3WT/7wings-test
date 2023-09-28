@@ -5,16 +5,19 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .container {
   display: flex;
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow: hidden;
   background: $background-color;
 }

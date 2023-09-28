@@ -11,6 +11,7 @@
 }
 
 @mixin input() {
+  width: 100%;
   padding: 10px;
   color: $secondary-text-color;
   font-size: 14px;
