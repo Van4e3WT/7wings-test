@@ -17,7 +17,7 @@ export type ExtendedRow = Row & {
 };
 
 export type NestedRow = ExtendedRow & {
-  child: Array<ExtendedRow>;
+  child: Array<NestedRow>;
 };
 
 export type CreateRowRequest = Row & {
