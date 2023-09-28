@@ -17,13 +17,15 @@ export const Workspace: React.FC = () => {
     api.getList().then(setList);
   }, []);
 
-  const handleFormSubmit: FormEventHandler = (e) => {
+  const handleFormSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
 
     if (!form) return;
 
-    if (form.mode === FormMode.CREATE) {
-      api.createRow({ ...form.row }).then((res) => {
+    try {
+      if (form.mode === FormMode.CREATE) {
+        const res = await api.createRow({ ...form.row });
+
         setList((prevState) => {
           if (!prevState) return null;
 
@@ -31,14 +33,12 @@ export const Workspace: React.FC = () => {
 
           return getFormattedList(res.changed, prevState) ?? null;
         });
-      }).catch((err) => {
-        console.error(err.message);
-      });
-    } else if (form.mode === FormMode.EDIT) {
-      api.updateRow({
-        rID: form.row.id,
-        request: form.row,
-      }).then((res) => {
+      } else if (form.mode === FormMode.EDIT) {
+        const res = await api.updateRow({
+          rID: form.row.id,
+          request: form.row,
+        });
+
         setList((prevState) => {
           if (!prevState) return null;
 
@@ -46,12 +46,12 @@ export const Workspace: React.FC = () => {
 
           return getFormattedList(res.changed, prevState) ?? null;
         });
-      }).catch((err) => {
-        console.error(err.message);
-      });
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    } finally {
+      setForm(null);
     }
-
-    setForm(null);
   };
 
   return (
