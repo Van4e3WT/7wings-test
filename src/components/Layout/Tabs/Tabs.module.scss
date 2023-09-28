@@ -1,6 +1,9 @@
 @import '@/styles/variables';
 
 .wrapper {
+  display: flex;
+  flex-shrink: 0;
+  overflow-x: auto;
   background-color: $secondary-background-color;
   border-bottom: 1px solid $border-color;
 }
@@ -10,5 +13,6 @@
   color: $text-color;
   font-size: 18px;
   line-height: 110%;
+  white-space: nowrap;
   border-right: 1px solid $border-color;
 }
