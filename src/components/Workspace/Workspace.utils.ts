@@ -2,6 +2,13 @@ import { ExtendedRow, ListResponse } from '@/api';
 
 import { ListAction } from './Workspace.types';
 
+/*
+ * NOTICE:
+ * Bug on the server side related to the fact that if we create/update an element
+ * and at the same time pass values that do not require recalculation of the parent element,
+ * then the first-order parent element is not returned in the changes array
+ */
+
 export const makeListEditor = (item: ExtendedRow, action: ListAction) => {
   const editList = (
     path: Array<ExtendedRow>,
