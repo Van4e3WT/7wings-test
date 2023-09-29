@@ -20,6 +20,7 @@ import S from './Row.module.scss';
 import { makeListEditor } from '../Workspace.utils';
 
 const INDENT_SIZE = 20;
+const LEVEL_CELL_INDENT = 60;
 
 type Props = {
   nesting?: Array<boolean>;
@@ -135,7 +136,10 @@ export const Row: React.FC<Props> = ({
         onDoubleClick={handleRowUpdate}
         onKeyDown={handleRowKeyDown}
       >
-        <Table.Data className={S['level-cell']}>
+        <Table.Data
+          className={S['level-cell']}
+          style={{ minWidth: `${nesting.length * INDENT_SIZE + LEVEL_CELL_INDENT}px` }}
+        >
           {nesting.map((isLast, idx) => (
             // eslint-disable-next-line react/no-array-index-key
             <Fragment key={idx}>
