@@ -1,7 +1,11 @@
 /* eslint-disable max-len */
 import cn from 'classnames';
 import {
-  ChangeEvent, Fragment, useEffect, useState,
+  ChangeEvent,
+  Fragment,
+  KeyboardEventHandler,
+  useEffect,
+  useState,
 } from 'react';
 
 import { NestedRow, api } from '@/api';
@@ -55,8 +59,8 @@ export const Row: React.FC<Props> = ({
   }, []);
 
   useEffect(() => {
-    if (mode === FormMode.EDIT && !form) setMode(FormMode.READ);
-  }, [mode, form]);
+    if (mode === FormMode.EDIT && form?.row.id !== data.id) setMode(FormMode.READ);
+  }, [mode, form, data.id]);
 
   const handleRowDelete = () => {
     api.deleteRow({ rID: data.id })
@@ -103,6 +107,10 @@ export const Row: React.FC<Props> = ({
     });
   };
 
+  const handleRowKeyDown: KeyboardEventHandler = (e) => {
+    if (e.code === 'Enter') handleRowUpdate();
+  };
+
   const makeInputChangeHandler = (prop: string, isNumber = false) => (
     e: ChangeEvent<HTMLInputElement>,
   ) => {
@@ -121,7 +129,12 @@ export const Row: React.FC<Props> = ({
 
   return (
     <>
-      <Table.Row onDoubleClick={handleRowUpdate}>
+      <Table.Row
+        className={S['row']}
+        tabIndex={0}
+        onDoubleClick={handleRowUpdate}
+        onKeyDown={handleRowKeyDown}
+      >
         <Table.Data className={S['level-cell']}>
           {nesting.map((isLast, idx) => (
             // eslint-disable-next-line react/no-array-index-key

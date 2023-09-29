@@ -2,6 +2,14 @@
 
 $icon-size: 24px;
 
+.row {
+  outline: none;
+
+  &:focus {
+    background-color: $secondary-background-color;
+  }
+}
+
 .level-cell {
   position: relative;
   padding: 0;
@@ -38,8 +46,10 @@ $icon-size: 24px;
 
 .button {
   padding: 2px;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $text-color;
   }
 

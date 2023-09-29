@@ -1,4 +1,9 @@
-import { FormEventHandler, useEffect, useState } from 'react';
+import {
+  FormEventHandler,
+  KeyboardEventHandler,
+  useEffect,
+  useState,
+} from 'react';
 
 import { Table } from '@/components/Table';
 import { ListResponse, api } from '@/api';
@@ -54,12 +59,17 @@ export const Workspace: React.FC = () => {
     }
   };
 
+  const handleFormReset: KeyboardEventHandler = (e) => {
+    if (e.code === 'Escape') setForm(null);
+  };
+
   return (
     <WorkspaceProvider value={{
       list, form, setList, setForm,
     }}
     >
-      <div className={S['wrapper']}>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <div className={S['wrapper']} onKeyDown={handleFormReset}>
         <form onSubmit={handleFormSubmit}>
           <Table>
             <Table.Head>

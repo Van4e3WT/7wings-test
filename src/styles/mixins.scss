@@ -12,10 +12,11 @@
 
 @mixin input() {
   width: 100%;
-  padding: 10px;
+  padding: 9px;
   color: $secondary-text-color;
   font-size: 14px;
   font-family: $font;
+  line-height: 115%;
   background-color: $background-color;
   border: 1px solid $border-color;
   border-radius: 6px;
