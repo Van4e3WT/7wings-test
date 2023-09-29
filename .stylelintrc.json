@@ -9,6 +9,7 @@
   ],
   "customSyntax": "PostCSS",
   "rules": {
+    "indentation": 2,
     "string-quotes": "single",
     "import-notation": "string",
     "property-no-vendor-prefix": null,
